@@ -9,7 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var field: Field!
+    let manager = Manager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,11 +26,25 @@ class ViewController: UIViewController {
                                 [2, 8, 0, 1, 6, 0, 0, 5, 4],
                                 [0, 6, 7, 5, 0, 3, 9, 0, 1],
                                 [0, 0, 3, 8, 4, 9, 2, 6, 0]]
+
+//        let numbers: [[Int]] = [[1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
+//            [1, 3, 8, 7, 5, 4, 3, 2, 1]]
         
-        let field = Field(center: CGPointMake(160, 300), numbers: numbers)
+        field = Field(center: CGPointMake(160, 284), numbers: numbers)
         self.view.addSubview(field)
     }
-
+    
+    @IBAction func start() {
+        manager.solve(field)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

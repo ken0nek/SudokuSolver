@@ -13,9 +13,11 @@ class Cell: UILabel {
     var row: Int = -1
     var column: Int = -1
     
-    var candidates: [UInt8] = Array<UInt8>(count: 9, repeatedValue: 0) {
+    var candidates: [UInt8] = Array<UInt8>(count: 9, repeatedValue: 1) {
         didSet {
             self.text = self.number != nil ? "\(self.number!)" : ""
+            
+            self.backgroundColor = self.isFixed ? UIColor.whiteColor() : UIColor(white: 0.8, alpha: 1.0)
         }
     }
     
@@ -35,7 +37,7 @@ class Cell: UILabel {
             var index: UInt8 = 0
             
             if self.isFixed {
-                for i in 0 ..< 9 {
+                for i in 0 ..< CELL_COUNT {
                     if candidates[i] == 1 {
                         index = UInt8(i)
                         break
