@@ -19,6 +19,8 @@ class Manager: NSObject {
     
     func solve(field: Field) {
         
+        let start = NSDate()
+        
         while !field.isFinished {
             println("continue")
             for row in 0 ..< CELL_COUNT {
@@ -32,6 +34,8 @@ class Manager: NSObject {
             }
         }
         
-        println("solved!")
+        let end = NSDate()
+        
+        println("solved! in \(end.timeIntervalSinceDate(start)) seconds")
     }
 }
