@@ -23,19 +23,32 @@ class Manager: NSObject {
         
         while !field.isFinished {
             println("continue")
-            for row in 0 ..< CELL_COUNT {
-                for column in 0 ..< CELL_COUNT {
-                    let cell = field.mat[row][column]
-                    if !cell.isFixed {
-                        field.check(row, column)
-                        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.05))
-                    }
-                }
-            }
+            self.scan(field)
         }
         
         let end = NSDate()
         
         println("solved! in \(end.timeIntervalSinceDate(start)) seconds")
+    }
+    
+    func scan(field: Field) {
+        for row in 0 ..< CELL_COUNT {
+            for column in 0 ..< CELL_COUNT {
+                let cell = field.mat[row][column]
+                if !cell.isFixed {
+                    if !field.check(row, column) {
+                        try(row, column, field)
+                    }
+                    NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.05))
+                }
+            }
+        }
+    }
+    
+    func try(row: Int, _ column: Int, _ field: Field) {
+        let cell = field.mat[row][column]
+        for k in 0 ..< CELL_COUNT {
+            
+        }
     }
 }

@@ -57,23 +57,24 @@ class Field: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func put(number: Int) -> [UInt8] {
+    func put(number: Int) -> [Int] {
         if number > 0 {
-            var array: [UInt8] = [UInt8](count: CELL_COUNT, repeatedValue: 0)
+            var array: [Int] = [Int](count: CELL_COUNT, repeatedValue: 0)
             array[number - 1] = 1
             
             return array
         } else {
-            return [UInt8](count: CELL_COUNT, repeatedValue: 1)
+            return [Int](count: CELL_COUNT, repeatedValue: 1)
         }
     }
     
-    func check(row: Int, _ column: Int) {
+    func check(row: Int, _ column: Int) -> Bool {
         let cell = self.mat[row][column]
         cell.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
         NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.05))
         
         println("start check \(row), \(column), \(cell.candidates)")
+        let preCandidate = cell.candidates
         
         // box
         self.checkBox(cell)
@@ -84,9 +85,15 @@ class Field: UIView {
         // column
         self.checkColumn(cell)
         
-        println("end check \(row), \(column), \(cell.candidates), \(cell.rest)")
+        println("end check \(row), \(column), \(cell.candidates), \(cell.rest), \(cell.numbers)")
+        let postCandidate = cell.candidates
+        
+        let isChanged = preCandidate != postCandidate
+        println("isChanged : \(isChanged)")
         
         self.printField()
+        
+        return isChanged
     }
     
     func checkBox(cell: Cell) {
@@ -98,7 +105,7 @@ class Field: UIView {
                 for c in cBase ..< cBase + 3 {
                     if cell.row != r && cell.column != c {
                         if let number = self.mat[r][c].number {
-                            println(number)
+                            println("detect : \(number)")
                             cell.candidates[number - 1] = 0
                         }
                     }
@@ -114,6 +121,7 @@ class Field: UIView {
             for x in 0 ..< CELL_COUNT {
                 if x != cell.column {
                     if let number = self.mat[cell.row][x].number {
+                        println("detect : \(number)")
                         cell.candidates[number - 1] = 0
                     }
                 }
@@ -128,6 +136,7 @@ class Field: UIView {
             for y in 0 ..< CELL_COUNT {
                 if y != cell.row {
                     if let number = self.mat[y][cell.column].number {
+                        println("detect : \(number)")
                         cell.candidates[number - 1] = 0
                     }
                 }
@@ -149,5 +158,8 @@ class Field: UIView {
             println("")
         }
     }
-
+    
+    func isValid(row: Int, _ column: Int, _ number: Int) -> Bool {
+        return true
+    }
 }

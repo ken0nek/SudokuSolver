@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A206C1C1A387EE500C985C9 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A206C1B1A387EE500C985C9 /* Manager.swift */; };
 		4AC1D1CB1A3749FB0034DBFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1CA1A3749FB0034DBFC /* AppDelegate.swift */; };
 		4AC1D1CD1A3749FB0034DBFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1CC1A3749FB0034DBFC /* ViewController.swift */; };
 		4AC1D1D01A3749FC0034DBFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1D1CE1A3749FC0034DBFC /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		4AC1D1E11A3749FC0034DBFC /* SudokuSolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1E01A3749FC0034DBFC /* SudokuSolverTests.swift */; };
 		4AC1D1EB1A374B300034DBFC /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1EA1A374B300034DBFC /* Field.swift */; };
 		4AC1D1ED1A37C5460034DBFC /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1EC1A37C5460034DBFC /* Cell.swift */; };
-		4AC1D1F11A37EC8A0034DBFC /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1F01A37EC8A0034DBFC /* Manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A206C1B1A387EE500C985C9 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		4AC1D1C51A3749FB0034DBFC /* SudokuSolver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudokuSolver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AC1D1C91A3749FB0034DBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AC1D1CA1A3749FB0034DBFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		4AC1D1E01A3749FC0034DBFC /* SudokuSolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuSolverTests.swift; sourceTree = "<group>"; };
 		4AC1D1EA1A374B300034DBFC /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		4AC1D1EC1A37C5460034DBFC /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		4AC1D1F01A37EC8A0034DBFC /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 			children = (
 				4AC1D1CA1A3749FB0034DBFC /* AppDelegate.swift */,
 				4AC1D1CC1A3749FB0034DBFC /* ViewController.swift */,
-				4AC1D1F01A37EC8A0034DBFC /* Manager.swift */,
+				4A206C1B1A387EE500C985C9 /* Manager.swift */,
 				4AC1D1EA1A374B300034DBFC /* Field.swift */,
 				4AC1D1EC1A37C5460034DBFC /* Cell.swift */,
 				4AC1D1CE1A3749FC0034DBFC /* Main.storyboard */,
@@ -225,7 +225,7 @@
 				4AC1D1ED1A37C5460034DBFC /* Cell.swift in Sources */,
 				4AC1D1CD1A3749FB0034DBFC /* ViewController.swift in Sources */,
 				4AC1D1CB1A3749FB0034DBFC /* AppDelegate.swift in Sources */,
-				4AC1D1F11A37EC8A0034DBFC /* Manager.swift in Sources */,
+				4A206C1C1A387EE500C985C9 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +417,7 @@
 				4AC1D1E61A3749FC0034DBFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4AC1D1E71A3749FC0034DBFC /* Build configuration list for PBXNativeTarget "SudokuSolverTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +426,7 @@
 				4AC1D1E91A3749FC0034DBFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

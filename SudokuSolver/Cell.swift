@@ -13,7 +13,7 @@ class Cell: UILabel {
     var row: Int = -1
     var column: Int = -1
     
-    var candidates: [UInt8] = Array<UInt8>(count: 9, repeatedValue: 1) {
+    var candidates: [Int] = Array<Int>(count: 9, repeatedValue: 1) {
         didSet {
             update()
         }
@@ -22,43 +22,35 @@ class Cell: UILabel {
     // number of candidates
     var rest: Int {
         get {
-            var count = 0
-            for x in 0 ..< CELL_COUNT {
-                if candidates[x] == 1 {
-                    count++
-                }
-            }
-            
-            return count
+            return numbers.count
         }
+    }
+    
+    // possible numbers
+    var numbers: [Int] {
+        var nums: [Int] = []
+        for x in 0 ..<
+            CELL_COUNT {
+            if candidates[x] == 1 {
+                nums.append(x+1)
+            }
+        }
+        
+        return nums
     }
     
     // whether the cell is filled
     var isFixed :Bool {
         get {
-            var total: UInt8 = 0
-            for x in candidates {
-                total += x
-            }
-            
-            return total == 1
+            return rest == 1
         }
     }
     
     // number that cell shows
     var number: Int? {
         get {
-            var index: Int = 0
-            
             if self.isFixed {
-                for i in 0 ..< CELL_COUNT {
-                    if candidates[i] == 1 {
-                        index = i
-                        break
-                    }
-                }
-                
-                return index + 1
+                return numbers[0]
             } else {
                 return nil
             }

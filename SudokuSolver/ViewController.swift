@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var field: Field!
-    let manager = Manager.sharedInstance
+    let manager: Manager = Manager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
