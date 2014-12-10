@@ -13,7 +13,8 @@
 		4AC1D1D21A3749FC0034DBFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1D1D11A3749FC0034DBFC /* Images.xcassets */; };
 		4AC1D1D51A3749FC0034DBFC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC1D1D31A3749FC0034DBFC /* LaunchScreen.xib */; };
 		4AC1D1E11A3749FC0034DBFC /* SudokuSolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1E01A3749FC0034DBFC /* SudokuSolverTests.swift */; };
-		4AC1D1EB1A374B300034DBFC /* SudokuField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1EA1A374B300034DBFC /* SudokuField.swift */; };
+		4AC1D1EB1A374B300034DBFC /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1EA1A374B300034DBFC /* Field.swift */; };
+		4AC1D1ED1A37C5460034DBFC /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1D1EC1A37C5460034DBFC /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,8 @@
 		4AC1D1DA1A3749FC0034DBFC /* SudokuSolverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudokuSolverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AC1D1DF1A3749FC0034DBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AC1D1E01A3749FC0034DBFC /* SudokuSolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuSolverTests.swift; sourceTree = "<group>"; };
-		4AC1D1EA1A374B300034DBFC /* SudokuField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuField.swift; sourceTree = "<group>"; };
+		4AC1D1EA1A374B300034DBFC /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		4AC1D1EC1A37C5460034DBFC /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,8 @@
 			children = (
 				4AC1D1CA1A3749FB0034DBFC /* AppDelegate.swift */,
 				4AC1D1CC1A3749FB0034DBFC /* ViewController.swift */,
-				4AC1D1EA1A374B300034DBFC /* SudokuField.swift */,
+				4AC1D1EA1A374B300034DBFC /* Field.swift */,
+				4AC1D1EC1A37C5460034DBFC /* Cell.swift */,
 				4AC1D1CE1A3749FC0034DBFC /* Main.storyboard */,
 				4AC1D1D11A3749FC0034DBFC /* Images.xcassets */,
 				4AC1D1D31A3749FC0034DBFC /* LaunchScreen.xib */,
@@ -215,7 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC1D1EB1A374B300034DBFC /* SudokuField.swift in Sources */,
+				4AC1D1EB1A374B300034DBFC /* Field.swift in Sources */,
+				4AC1D1ED1A37C5460034DBFC /* Cell.swift in Sources */,
 				4AC1D1CD1A3749FB0034DBFC /* ViewController.swift in Sources */,
 				4AC1D1CB1A3749FB0034DBFC /* AppDelegate.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  SudokuField.swift
+//  Field.swift
 //  SudokuSolver
 //
 //  Created by Ken Tominaga on 12/10/14.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class SudokuField: UIView {
+class Field: UIView {
     var mat: [[[UInt8]]] = Array(count: 9, repeatedValue: Array(count: 9, repeatedValue: Array(count: 9, repeatedValue: 0)))
+    
+    let SIZE: CGFloat = 34
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let size = frame.size.width / 9 // equals to frame.size.height / 9
+        // let size = frame.size.width / 9 // equals to frame.size.height / 9
         
         let numbers: [[Int]] = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
                                 [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -31,7 +33,7 @@ class SudokuField: UIView {
                 
                 mat[i][j] = put(numbers[i][j])
                 
-                let label = UILabel(frame: CGRectMake(frame.origin.x + size * CGFloat(j), frame.origin.y + size * CGFloat(i), size, size))
+                let label = UILabel(frame: CGRectMake(SIZE * CGFloat(j), SIZE * CGFloat(i), SIZE, SIZE))
                 label.text = show(mat[i][j])
                 label.textAlignment = NSTextAlignment.Center
                 label.textColor = UIColor.blackColor()

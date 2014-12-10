@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let field = SudokuField(frame: CGRectMake(0, 80, 320, 320))
+        let field = Field(frame: CGRectMake(7, 80, 320, 320))
         self.view.addSubview(field)
     }
 
