@@ -26,8 +26,7 @@ class Manager: NSObject {
                     let cell = field.mat[row][column]
                     if !cell.isFixed {
                         field.check(row, column)
-                        
-                        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.1))
+                        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.05))
                     }
                 }
             }

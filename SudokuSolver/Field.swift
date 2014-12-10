@@ -69,9 +69,9 @@ class Field: UIView {
     }
     
     func check(row: Int, _ column: Int) {
-        
         let cell = self.mat[row][column]
-        // var newCandidates = cell.candidates
+        cell.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
+        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.05))
         
         println("start check \(row), \(column), \(cell.candidates)")
         
