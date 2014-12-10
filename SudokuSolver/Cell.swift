@@ -15,9 +15,7 @@ class Cell: UILabel {
     
     var candidates: [UInt8] = Array<UInt8>(count: 9, repeatedValue: 1) {
         didSet {
-            self.text = self.number != nil ? "\(self.number!)" : ""
-            
-            self.backgroundColor = self.isFixed ? UIColor.whiteColor() : UIColor(white: 0.8, alpha: 1.0)
+            update()
         }
     }
     
@@ -32,19 +30,19 @@ class Cell: UILabel {
         }
     }
     
-    var number: UInt8? {
+    var number: Int? {
         get {
-            var index: UInt8 = 0
+            var index: Int = 0
             
             if self.isFixed {
                 for i in 0 ..< CELL_COUNT {
                     if candidates[i] == 1 {
-                        index = UInt8(i)
+                        index = i
                         break
                     }
                 }
                 
-                return UInt8(index + 1)
+                return index + 1
             } else {
                 return nil
             }
@@ -75,4 +73,8 @@ class Cell: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func update() {
+        self.text = self.isFixed ? "\(self.number!)" : ""
+        self.backgroundColor = self.isFixed ? UIColor.whiteColor() : UIColor(white: 0.8, alpha: 1.0)
+    }
 }

@@ -26,16 +26,6 @@ class ViewController: UIViewController {
                                 [2, 8, 0, 1, 6, 0, 0, 5, 4],
                                 [0, 6, 7, 5, 0, 3, 9, 0, 1],
                                 [0, 0, 3, 8, 4, 9, 2, 6, 0]]
-
-//        let numbers: [[Int]] = [[1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1],
-//            [1, 3, 8, 7, 5, 4, 3, 2, 1]]
         
         field = Field(center: CGPointMake(160, 284), numbers: numbers)
         self.view.addSubview(field)
@@ -43,6 +33,7 @@ class ViewController: UIViewController {
     
     @IBAction func start() {
         manager.solve(field)
+        // self.solve()
     }
     
     override func didReceiveMemoryWarning() {

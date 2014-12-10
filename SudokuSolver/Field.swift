@@ -68,28 +68,86 @@ class Field: UIView {
         }
     }
     
-    func getEmptyPosition() -> (row: Int, column: Int) {
+    func check(row: Int, _ column: Int) {
         
-        for row in 0 ..< CELL_COUNT {
-            for column in 0 ..< CELL_COUNT {
-                let cell = mat[row][column]
-                if !cell.isFixed {
-                    
-                    self.erasePossibility(row, column)
-                    return (row, column)
+        let cell = self.mat[row][column]
+        // var newCandidates = cell.candidates
+        
+        println("start check \(row), \(column), \(cell.candidates)")
+        
+        // box
+        self.checkBox(cell)
+        
+        // row
+        self.checkRow(cell)
+        
+        // column
+        self.checkColumn(cell)
+        
+        println("end check \(row), \(column), \(cell.candidates)")
+        
+        self.printField()
+    }
+    
+    func checkBox(cell: Cell) {
+        println("start check box")
+        if !cell.isFixed {
+            let rBase = (cell.row / 3) * 3
+            let cBase = (cell.column / 3) * 3
+            for r in rBase ..< rBase + 3 {
+                for c in cBase ..< cBase + 3 {
+                    if cell.row != r && cell.column != c {
+                        if let number = self.mat[r][c].number {
+                            println(number)
+                            cell.candidates[number - 1] = 0
+                        }
+                    }
                 }
             }
         }
-        
-        return (-1, -1)
+        println("end check box")
     }
     
-    func erasePossibility(row: Int, _ column: Int) {
-        // row
-        
-        // column
-        
-        // box
+    func checkRow(cell: Cell) {
+        println("start check row")
+        if !cell.isFixed {
+            for x in 0 ..< CELL_COUNT {
+                if x != cell.column {
+                    if let number = self.mat[cell.row][x].number {
+                        cell.candidates[number - 1] = 0
+                    }
+                }
+            }
+        }
+        println("end check row")
     }
     
+    func checkColumn(cell: Cell) {
+        println("start check column")
+        if !cell.isFixed {
+            for y in 0 ..< CELL_COUNT {
+                if y != cell.row {
+                    if let number = self.mat[y][cell.column].number {
+                        cell.candidates[number - 1] = 0
+                    }
+                }
+            }
+        }
+        println("end check column")
+    }
+    
+    func printField() {
+        for row in 0 ..< CELL_COUNT {
+            for column in 0 ..< CELL_COUNT {
+                let cell = self.mat[row][column]
+                if cell.isFixed {
+                    print(" \(cell.number!) ")
+                } else {
+                    print(" * ")
+                }
+            }
+            println("")
+        }
+    }
+
 }

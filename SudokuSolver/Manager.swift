@@ -18,10 +18,19 @@ class Manager: NSObject {
     }
     
     func solve(field: Field) {
+        
         while !field.isFinished {
             println("continue")
-            let (row, column) = field.getEmptyPosition()
-            
+            for row in 0 ..< CELL_COUNT {
+                for column in 0 ..< CELL_COUNT {
+                    let cell = field.mat[row][column]
+                    if !cell.isFixed {
+                        field.check(row, column)
+                        
+                        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.1))
+                    }
+                }
+            }
         }
         
         println("solved!")
