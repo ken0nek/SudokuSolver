@@ -31,6 +31,16 @@ class Manager: NSObject {
         println("solved! in \(end.timeIntervalSinceDate(start)) seconds")
     }
     
+    func reset(field: Field) {
+        for row in 0 ..< CELL_COUNT {
+            for column in 0 ..< CELL_COUNT {
+                let cell = field.mat[row][column]
+                cell.candidates = field.put(field.numbers[row][column])
+                field.mat[row][column] = cell
+            }
+        }
+    }
+    
     func scan(field: Field) {
         for row in 0 ..< CELL_COUNT {
             for column in 0 ..< CELL_COUNT {

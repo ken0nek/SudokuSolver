@@ -14,13 +14,15 @@ let FIELD_SIZE: CGFloat = CELL_SIZE * CGFloat(CELL_COUNT)
 
 class Field: UIView {
     var mat: [[Cell]] = Array(count: CELL_COUNT, repeatedValue: [Cell](count: CELL_COUNT, repeatedValue: Cell()))
+    var numbers: [[Int]] = Array(count: CELL_COUNT, repeatedValue: [Int](count: CELL_COUNT, repeatedValue: 0))
     
     var isFinished: Bool {
         get {
             
             for row in 0 ..< CELL_COUNT {
                 for column in 0 ..< CELL_COUNT {
-                    if !self.mat[row][column].isFixed {
+                    let cell = self.mat[row][column]
+                    if !cell.isFixed {
                         return false
                     }
                 }
@@ -33,12 +35,13 @@ class Field: UIView {
     init(center: CGPoint, numbers: [[Int]]) {
         super.init(frame: CGRectMake(0, 0, CELL_SIZE * 9, CELL_SIZE * 9))
         self.center = center
+        self.numbers = numbers
         
         for row in 0 ..< CELL_COUNT {
             for column in 0 ..< CELL_COUNT {
                 let cell = Cell(row: row, column: column)
-                cell.candidates = put(numbers[row][column])
-            
+                cell.candidates = put(self.numbers[row][column])
+    
                 mat[row][column] = cell
                 self.addSubview(cell)
             }
