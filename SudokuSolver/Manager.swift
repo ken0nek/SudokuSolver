@@ -17,18 +17,22 @@ class Manager: NSObject {
         return Static.instance
     }
     
-    func solve(field: Field) {
+    func solve(field: Field) -> Bool {
         
-        let start = NSDate()
-        
-        while !field.isFinished {
+        if !field.findBlank().isFinished {
             println("continue")
-            self.scan(field)
+            let isChanged = self.scan(0, 0, field)
+
+            if !isChanged {
+                println("stack!")
+//                try(0, 0, field)
+                try2(field)
+            } else {
+                self.solve(field)
+            }
         }
         
-        let end = NSDate()
-        
-        println("solved! in \(end.timeIntervalSinceDate(start)) seconds")
+        return true
     }
     
     func reset(field: Field) {
@@ -41,24 +45,63 @@ class Manager: NSObject {
         }
     }
     
-    func scan(field: Field) {
-        for row in 0 ..< CELL_COUNT {
-            for column in 0 ..< CELL_COUNT {
-                let cell = field.mat[row][column]
-                if !cell.isFixed {
-                    if !field.check(row, column) {
-                        try(row, column, field)
-                    }
-                    NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 0.05))
-                }
-            }
+    func scan(var row: Int, var _ column: Int, _ field: Field) -> Bool {
+        var isChanged: Bool = false
+        
+        if row > 8 || column > 8 {
+            return isChanged
+        }
+        
+        let cell = field.mat[row][column]
+        if !cell.isFixed {
+            isChanged |= field.check(row, column)
+        }
+        
+        scan(column > 7 ? ++row : row, column > 7 ? 0 : ++column, field)
+        
+        return isChanged
+    }
+    
+    func try(var row: Int, var _ column: Int, _ field: Field) {
+        if row > 8 || column > 8 {
+            return
+        }
+        
+        let cell = field.mat[row][column]
+        
+        if cell.isFixed {
+            try(column > 7 ? ++row : row, column > 7 ? 0 : ++column, field)
+        }
+        
+//        let exCandidates = cell.candidates
+//        let exField = field
+        
+        for k in cell.numbers {
+            cell.candidates = field.put(k)
+            // self.try(<#row: Int#>, <#column: Int#>, <#field: Field#>)
+            cell.candidates = field.put(0)
         }
     }
     
-    func try(row: Int, _ column: Int, _ field: Field) {
-        let cell = field.mat[row][column]
-        for k in 0 ..< CELL_COUNT {
+    func try2(field: Field) {
+        let (row, column, isFinished) = field.findBlank()
+        if !isFinished {
+            let cell = field.mat[row][column]
             
+            let exCandidates = cell.candidates
+            
+            for k in cell.numbers {
+                if field.isValid(row, column, k) {
+                    cell.candidates = field.put(k)
+                    self.scan(0, 0, field)
+                    cell.candidates = exCandidates
+                }
+            }
+        } else {
+            println("solved")
+            println("------------------")
+            field.printField()
+            println("------------------")
         }
     }
 }
