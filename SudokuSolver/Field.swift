@@ -56,7 +56,7 @@ class Field: UIView {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func put(number: Int) -> [UInt8] {
         if number > 0 {
             var array: [UInt8] = [UInt8](count: CELL_COUNT, repeatedValue: 0)
@@ -84,7 +84,7 @@ class Field: UIView {
         // column
         self.checkColumn(cell)
         
-        println("end check \(row), \(column), \(cell.candidates)")
+        println("end check \(row), \(column), \(cell.candidates), \(cell.rest)")
         
         self.printField()
     }

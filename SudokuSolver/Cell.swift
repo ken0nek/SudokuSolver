@@ -19,6 +19,21 @@ class Cell: UILabel {
         }
     }
     
+    // number of candidates
+    var rest: Int {
+        get {
+            var count = 0
+            for x in 0 ..< CELL_COUNT {
+                if candidates[x] == 1 {
+                    count++
+                }
+            }
+            
+            return count
+        }
+    }
+    
+    // whether the cell is filled
     var isFixed :Bool {
         get {
             var total: UInt8 = 0
@@ -30,6 +45,7 @@ class Cell: UILabel {
         }
     }
     
+    // number that cell shows
     var number: Int? {
         get {
             var index: Int = 0
