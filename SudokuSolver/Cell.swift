@@ -29,8 +29,7 @@ class Cell: UILabel {
     // possible numbers
     var numbers: [Int] {
         var nums: [Int] = []
-        for x in 0 ..<
-            CELL_COUNT {
+        for x in 0 ..< CELL_COUNT {
             if candidates[x] == 1 {
                 nums.append(x+1)
             }
@@ -45,6 +44,11 @@ class Cell: UILabel {
             return rest == 1
         }
     }
+    
+    private var __number: Int?
+    
+//    // number that cell shows
+//    var number: Int?
     
     // number that cell shows
     var number: Int? {
@@ -82,7 +86,7 @@ class Cell: UILabel {
     }
     
     func update() {
-        self.text = self.isFixed ? "\(self.number!)" : ""
+        self.text = self.number != nil ? "\(self.number!)" : ""
         self.backgroundColor = self.isFixed ? UIColor.whiteColor() : UIColor(white: 0.8, alpha: 1.0)
     }
 }

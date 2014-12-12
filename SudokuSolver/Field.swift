@@ -150,7 +150,8 @@ class Field: UIView {
         for row in 0 ..< CELL_COUNT {
             for column in 0 ..< CELL_COUNT {
                 let cell = self.mat[row][column]
-                if cell.isFixed {
+                // if cell.isFixed {
+                if cell.number != nil {
                     print(" \(cell.number!) ")
                 } else {
                     print(" * ")
@@ -235,5 +236,29 @@ class Field: UIView {
         }
         
         return (-1, -1, true)
+    }
+    
+    func findMinimumCandidates() -> (row: Int, column: Int) {
+        var num = CELL_COUNT
+        var x = 0
+        var y = 0
+        
+        for row in 0 ..< CELL_COUNT {
+            for column in 0 ..< CELL_COUNT {
+                let cell = self.mat[row][column]
+                if !cell.isFixed {
+                    if cell.rest < num {
+                        num = cell.rest
+                        x = column
+                        y = row
+                        if num == 2 {
+                            return (y, x)
+                        }
+                    }
+                }
+            }
+        }
+        
+        return (y, x)
     }
 }

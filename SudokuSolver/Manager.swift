@@ -17,7 +17,7 @@ class Manager: NSObject {
         return Static.instance
     }
     
-    func solve(field: Field) -> Bool {
+    func solve(field: Field) -> Field {
         
         if !field.findBlank().isFinished {
             println("continue")
@@ -25,14 +25,14 @@ class Manager: NSObject {
 
             if !isChanged {
                 println("stack!")
-//                try(0, 0, field)
-                try2(field)
+                let (row, column) = field.findMinimumCandidates()
+                try(row, column, field)
             } else {
                 self.solve(field)
             }
         }
         
-        return true
+        return field
     }
     
     func reset(field: Field) {
@@ -49,7 +49,7 @@ class Manager: NSObject {
         var isChanged: Bool = false
         
         if row > 8 || column > 8 {
-            return isChanged
+            return true
         }
         
         let cell = field.mat[row][column]
@@ -63,38 +63,32 @@ class Manager: NSObject {
     }
     
     func try(var row: Int, var _ column: Int, _ field: Field) {
-        if row > 8 || column > 8 {
-            return
-        }
-        
         let cell = field.mat[row][column]
         
-        if cell.isFixed {
-            try(column > 7 ? ++row : row, column > 7 ? 0 : ++column, field)
-        }
-        
-//        let exCandidates = cell.candidates
-//        let exField = field
-        
         for k in cell.numbers {
+            println("try : put \(k) at \(row), \(column)")
             cell.candidates = field.put(k)
-            // self.try(<#row: Int#>, <#column: Int#>, <#field: Field#>)
-            cell.candidates = field.put(0)
+            self.solve(field)
+            
+            
+            // cell.number = nil
+            
         }
     }
     
     func try2(field: Field) {
+        
+        let exField = field
+        
         let (row, column, isFinished) = field.findBlank()
         if !isFinished {
             let cell = field.mat[row][column]
             
-            let exCandidates = cell.candidates
-            
             for k in cell.numbers {
                 if field.isValid(row, column, k) {
                     cell.candidates = field.put(k)
-                    self.scan(0, 0, field)
-                    cell.candidates = exCandidates
+                    self.solve(field)
+                    try2(exField)
                 }
             }
         } else {

@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 //        [0, 0, 0, 0, 0, 0, 0, 0, 0]
 //    ]
     
-//    let numbers: [[Int]] = // beginner
+//    let numbers: [[Int]] = // beginner1
 //    [
 //        [0, 3, 8, 0, 5, 0, 0, 0, 0],
 //        [9, 0, 4, 6, 0, 1, 0, 7, 2],
